@@ -1,11 +1,11 @@
 .element__like {
   width: 22px;
   height: 19px;
-  background-image: url(../../../images/Like.png);  
+  background-image: url(../../../images/Like.png);
   background-repeat: no-repeat;
   border: none;
   background-color: unset;
-  object-fill: contain;
+  object-fit: contain;
   padding: 0;
   margin: 5px 5px -1px 0;
 }

@@ -1,5 +1,5 @@
 .elements {
-  display: grid;  
+  display: grid;
   max-width: 880px;
   margin: auto;
   grid-template-columns: repeat(auto-fit,minmax(282px,1fr));
