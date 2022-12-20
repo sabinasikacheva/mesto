@@ -10,8 +10,8 @@ const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__job');
 
 function openPopup() {
-  nameProfile.textContent = nameInput.value;
-  jobProfile.textContent = jobInput.value;
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = jobProfile.textContent;
   aboutPopup.classList.add('popup_opened');
 }
 function closePopup() {
