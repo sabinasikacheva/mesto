@@ -7,9 +7,3 @@
   row-gap: 20px;
   column-gap: 17px;
 }
-
-@media screen and (max-width: 767px) {
-  .elements {
-    margin-left: 19px;
-    }
-  }

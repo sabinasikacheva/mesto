@@ -1,13 +1,14 @@
 .footer__copyright {
-  background-image: url(../../../images/©\ 2020\ Mesto\ Russia.png);
-  background-repeat: no-repeat;
-  background-size: contain;
   max-width: 318px;
-  height: 18px;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  margin: 0;
 }
 
 @media screen and (max-width: 767px) {
   .footer__copyright {
-    height: 14px;
+    font-size: 14px;
+    line-height: 17px;
     }
   }
