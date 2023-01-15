@@ -1,9 +1,7 @@
-// Находим форму в DOM
 const formElement = document.querySelector('.popup__form');
-// Находим поля формы в DOM
 const nameInput = document.querySelector('.popup__form-text_type_name');
 const jobInput = document.querySelector('.popup__form-text_type_job');
-const aboutPopup = document.querySelector('.popup');
+const popup = document.querySelector('.popup');
 const popupEditProfile = document.querySelector('.popup_type_profile');
 const profEditButton = document.querySelector('.profile__edit-button');
 const popupCloseButton = document.querySelector('.popup__close-button');
@@ -21,14 +19,16 @@ const popupCardImage = document.querySelector('.popup_type_image');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 const popupImageClose = popupCardImage.querySelector('.popup__close-button');
-
-function openPopup(aboutPopup) {
-  nameInput.value = nameProfile.textContent;
-  jobInput.value = jobProfile.textContent;
-  aboutPopup.classList.add('popup_opened');
+// Функция открытия попапа
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
-// Обработчик «отправки» формы
-function handleFormSubmit (evt) {
+function openEditProfile () {
+  openPopup(popupEditProfile);
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = jobProfile.textContent;  
+}
+function handleFormSubmitProfile (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
@@ -36,7 +36,7 @@ function handleFormSubmit (evt) {
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener('submit', handleFormSubmitProfile);
 
 profEditButton.addEventListener('click', function () {
   openPopup(popupEditProfile);
@@ -51,20 +51,13 @@ function closePopup(a) {
 popupCloseButton.addEventListener('click', () => {
   closePopup(popupEditProfile);
 });
-function closePopup(popupEditProfile) {
-  popupEditProfile.classList.remove('popup_opened');  
-}
 addCardCloseButton.addEventListener('click', () => {
   closePopup(popupAddCard);
 });
-function closePopup(popupAddCard) {
-  popupAddCard.classList.remove('popup_opened');  
-}
 popupImageClose.addEventListener("click", function () {
   closePopup(popupCardImage);
 });
 // Функция создания карточки
-
 function createCard({name, link}) {
   const card = cardsTemplate.cloneNode(true);
   const cardName = card.querySelector('.element__title');
@@ -85,14 +78,6 @@ function createCard({name, link}) {
   cardImage.addEventListener("click", function () {
     popupImage.src = link;
     popupImage.alt = name;
-    console.log(popupCaption);
-    popupCaption.textContent = name;
-    openPopup(popupCardImage);
-  });
-  cardImage.addEventListener("click", function () {
-    popupImage.src = link;
-    popupImage.alt = name;
-    console.log(popupCaption);
     popupCaption.textContent = name;
     openPopup(popupCardImage);
   });
@@ -118,3 +103,5 @@ function addCard(evt) {
   closePopup(popupAddCard);
   addCardForm.reset();
 }
+
+
