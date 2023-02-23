@@ -1,3 +1,16 @@
+import Card from "./card.js";
+import FormValidator from "./FormValidator.js";
+import { initialCards, validationList } from "./data.js";
+
+import {formElement, inputElement, buttonElement, nameInput, jobInput, popup, popupEditProfile,
+  profEditButton, popupCloseButton, nameProfile, jobProfile, addCardButton, popupAddCard, addCardCloseButton,
+  addCardForm, addCardName, addCardLink, cardsContainer, cardsTemplate, popupCardImage,
+  popupImage, popupCaption, popupImageClose, popups } from "./constants.js";
+
+const profileValidator = new FormValidator (validationList, popupEditProfile);
+profileValidator.enableValidation();
+const addCardValidator = new FormValidator (validationList, popupAddCard);
+addCardValidator.enableValidation()
 
 // Функция открытия попапа
 function openPopup(popup) {
@@ -21,12 +34,12 @@ formElement.addEventListener('submit', handleFormSubmitProfile);
 
 profEditButton.addEventListener('click', function () {
   formElement.reset();
-  removeError(popupEditProfile, validationList);
+  profileValidator.resetValidation();
   openPopup(popupEditProfile);
 });
 addCardButton.addEventListener('click', function () {
   addCardForm.reset();
-  removeError(popupAddCard, validationList);
+  addCardValidator.resetValidation();
   openPopup(popupAddCard);
 })
 // Функция закрытия попапа
@@ -59,31 +72,10 @@ function closeOverlay(evt) {
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', closeOverlay)
   })
-// Функция создания карточки
-function createCard({name, link}) {
-  const card = cardsTemplate.cloneNode(true);
-  const cardName = card.querySelector('.element__title');
-  const cardImage = card.querySelector('.element__image');
-  const deleteButton = card.querySelector('.element__trash');
-  const likeButton = card.querySelector('.element__like');
-  cardName.textContent = name;
-  cardImage.src = link;
-  cardImage.alt = name;
-  function deleteCard(event) {
-    event.target.closest('.element').remove();
-    }
-    deleteButton.addEventListener('click', deleteCard);
-  likeButton.addEventListener("click", function () {
-    likeButton.classList.toggle("element__like_active");
-  });
-
-  cardImage.addEventListener("click", function () {
-    popupImage.src = link;
-    popupImage.alt = name;
-    popupCaption.textContent = name;
-    openPopup(popupCardImage);
-  });
-  return card;
+// Функция создания карточки через класс
+function createCard(item) {
+  const card = new Card(item, '.element-template');
+  return card.createCard();
 }
 function renderCards() {
   initialCards.forEach(item => {
@@ -95,6 +87,7 @@ renderCards();
 
 addCardForm.addEventListener('submit', addCard);
 
+//функция добавления карточки в разметку
 function addCard(evt) {
   evt.preventDefault();
   const inputs = {};

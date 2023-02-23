@@ -22,3 +22,8 @@ const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 const popupImageClose = popupCardImage.querySelector('.popup__close-button');
 const popups = Array.from(document.querySelectorAll('.popup'));
+
+export { formElement, inputElement, buttonElement, nameInput, jobInput, popup, popupEditProfile,
+profEditButton, popupCloseButton, nameProfile, jobProfile, addCardButton, popupAddCard, addCardCloseButton,
+addCardForm, addCardName, addCardLink, cardsContainer, cardsTemplate, popupCardImage,
+popupImage, popupCaption, popupImageClose, popups }; 
