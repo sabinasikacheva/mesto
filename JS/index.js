@@ -1,11 +1,11 @@
-import Card from "./card.js";
+import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import { initialCards, validationList } from "./data.js";
+import { initialCards, validationList } from "./Data.js";
 
 import {formElement, inputElement, buttonElement, nameInput, jobInput, popup, popupEditProfile,
   profEditButton, popupCloseButton, nameProfile, jobProfile, addCardButton, popupAddCard, addCardCloseButton,
   addCardForm, addCardName, addCardLink, cardsContainer, cardsTemplate, popupCardImage,
-  popupImage, popupCaption, popupImageClose, popups } from "./constants.js";
+  popupImage, popupCaption, popupImageClose, popups } from "./Constants.js";
 
 const profileValidator = new FormValidator (validationList, popupEditProfile);
 profileValidator.enableValidation();
@@ -20,7 +20,6 @@ function openPopup(popup) {
 function openEditProfile () {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
-  openPopup(popupEditProfile);
 }
 function handleFormSubmitProfile (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -36,6 +35,7 @@ profEditButton.addEventListener('click', function () {
   formElement.reset();
   profileValidator.resetValidation();
   openPopup(popupEditProfile);
+  openEditProfile();
 });
 addCardButton.addEventListener('click', function () {
   addCardForm.reset();
@@ -65,16 +65,15 @@ function closeEsc(event) {
 }
 function closeOverlay(evt) {
   if (evt.target.classList.contains('popup')) {
-   const activePopup = document.querySelector('.popup_opened');
-  closePopup(activePopup);
-}
+   closePopup(evt.target);
+  }
 };
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', closeOverlay)
   })
 // Функция создания карточки через класс
 function createCard(item) {
-  const card = new Card(item, '.element-template');
+  const card = new Card(item, '.element-template', openImagePopup);
   return card.createCard();
 }
 function renderCards() {
@@ -97,4 +96,11 @@ function addCard(evt) {
   cardsContainer.prepend(card);
   closePopup(popupAddCard);
   addCardForm.reset();
+}
+
+function openImagePopup(name, link) {
+  popupImage.src = link;
+  popupImage.alt = name;
+  popupCaption.textContent = name;
+  openPopup(popupCardImage);
 }

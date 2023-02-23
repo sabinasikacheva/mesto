@@ -1,4 +1,4 @@
-import { validationList } from "./data.js";
+import { validationList } from "./Data.js";
 
 export default class FormValidator {
   constructor(validationList, formElement) {
