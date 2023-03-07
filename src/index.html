@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto Russia</title>
-   <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body class="body">
     <div class="page">
@@ -13,7 +12,7 @@
       </header>
       <main class="main">
         <section class="profile">
-            <img class="profile__avatar" src="./images/Avatar.jpg" alt="Аватар пользователя">
+            <img class="profile__avatar" src="<%=require('./images/Avatar.jpg')%>" alt="Аватар пользователя">
           <div class="profile__info">
             <div class="profile__item">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -46,7 +45,7 @@
             <input class="popup__input popup__input_type_name" id="popup__input-name" type="text" name="name" 
             value="Жак-Ив Кусто" required minlength="2" maxlength="40">
             <span class="popup__input-error popup__input-name-error"></span>
-            <input class="popup__input popup__input_type_job" id="popup__input-job" type="text" name="job" 
+            <input class="popup__input popup__input_type_job" id="popup__input-job" type="text" name="info" 
             value="Исследователь океана" required minlength="2" maxlength="200">
             <span class="popup__input-error popup__input-job-error"></span>
             <button class="popup__save-button" type="submit">Сохранить</button>
@@ -76,6 +75,5 @@
         </div>
       </div>
     </div>
-    <script type="module" src="./JS/index.js"></script>
   </body>
 </html>
