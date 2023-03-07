@@ -1,10 +1,3 @@
-import {
-  popupCardImage,
-  popupImage,
-  popupCaption,
-  popupImageClose,
-} from "./Constants.js";
-
 class Card {
   constructor(item, templateSelector, openImagePopup) {
     this._name = item.name;
@@ -24,15 +17,15 @@ class Card {
     this._element
       .querySelector(".element__trash")
       .addEventListener("click", () => this._deleteCard());
-    this._element
-      .querySelector(".element__like")
+    this._likeButton
       .addEventListener("click", () => this._likeCard());
     this._cardImage
       .addEventListener("click", () => this._openImagePopup(this._name, this._link));
   }
 
   _deleteCard() {
-    this._element.remove();
+    this._element.remove(); 
+    this._element = null;
   }
 
   _likeCard(evt) {

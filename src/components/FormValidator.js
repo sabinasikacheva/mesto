@@ -1,5 +1,3 @@
-import { validationList } from "./Data.js";
-
 export default class FormValidator {
   constructor(validationList, formElement) {
     this._formElement = formElement;
@@ -45,8 +43,8 @@ export default class FormValidator {
   }
 
   _setEventListeners() {
-    this._inputList = Array.from(this._formElement.querySelectorAll(validationList.inputSelector));
-    this._buttonElement = this._formElement.querySelector(validationList.submitButtonSelector);
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._validationList.inputSelector));
+    this._buttonElement = this._formElement.querySelector(this._validationList.submitButtonSelector);
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {

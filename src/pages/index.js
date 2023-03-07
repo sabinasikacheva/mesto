@@ -1,9 +1,9 @@
 import '../pages/index.css';
-import { initialCards, validationList } from "../components/Data.js";
+import { initialCards, validationList } from "../components/data.js";
 import {formElement, inputElement, buttonElement, nameInput, jobInput, popup, popupEditProfile,
-  profEditButton, popupCloseButton, nameProfile, jobProfile, addCardButton, popupAddCard, addCardCloseButton,
-  addCardForm, addCardName, addCardLink, cardsContainer, cardsTemplate, popupCardImage,
-  popupImage, popupCaption, popupImageClose, popups } from "../components/Constants.js";
+  profEditButton, popupCloseButton, nameProfile, jobProfile, profAddButton, popupAddCard, cardCloseButton,
+  cardForm, cardName, cardLink, cardsContainer, cardsTemplate, popupCardImage,
+  popupImage, popupCaption, popupImageClose, popups } from "../components/constants.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -58,8 +58,8 @@ profEditButton.addEventListener('click', function () {
   jobInput.value = userData.info;
   profileValidator.resetValidation();
 });
-addCardButton.addEventListener('click', function () {
-  addCardForm.reset();
+profAddButton.addEventListener('click', function () {
+  cardForm.reset();
   popupCard.openPopup();
   addCardValidator.resetValidation();
 });
