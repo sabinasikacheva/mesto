@@ -1,9 +1,9 @@
 import '../pages/index.css';
-import { validationList } from "../components/data.js";
+import { validationList } from "../utils/data.js";
 import { changeAvatarButton, token, URL, formElement, inputElement, buttonElement, nameInput, jobInput, popup, popupEditProfile,
   profEditButton, popupCloseButton, popupChangeAvatar, nameProfile, jobProfile, profAddButton, popupAddCard, cardCloseButton,
   cardForm, cardName, cardLink, cardsContainer, cardsTemplate, popupCardImage,
-  popupImage, popupCaption, popupImageClose, popups } from "../components/constants.js";
+  popupImage, popupCaption, popupImageClose, popups } from "../utils/constants.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";

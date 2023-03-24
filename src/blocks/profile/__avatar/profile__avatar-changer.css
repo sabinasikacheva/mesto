@@ -16,6 +16,6 @@
 .profile__avatar-changer:hover{
     opacity: 0.8;
     background-color: black;
-    background-image: url(../../../images/Edit\ Profile.svg);
+    background-image: url(../../../images/EditProfile.svg);
     cursor: pointer; 
 }
