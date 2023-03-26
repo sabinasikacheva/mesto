@@ -18,8 +18,4 @@ export default class UserInfo {
     this._userInfo.textContent = data.about;
     this._userUrl.src = data.avatar;
   }
-
-  changeAvatarPicture(data) {
-    this._userUrl.src = data.avatar;
-  }
 }

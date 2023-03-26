@@ -40,7 +40,7 @@ cardsContainer
 
 function createCard(item) {
   const card = new Card(item, currentUserId, '.element-template', deleteCard,
-  likeClick, (name, link) => {popupPhoto.openImagePopup(name, link); });
+  toggleLike, (name, link) => {popupPhoto.openImagePopup(name, link); });
   return card.generateCard();
 }
 
@@ -57,7 +57,7 @@ function deleteCard(id, element) {
       })
   })
 }
-function likeClick(card) {
+function toggleLike(card) {
   const promise = card.isLiked(card) ? api.deleteLike(card._id) : api.setLike(card._id);
   promise
     .then((data) => {
@@ -84,7 +84,7 @@ const addCard = (data, currentUserId) => {
     })
 };
 
-const handleFormSubmit = (item) => {
+const handleProfileFormSubmit = (item) => {
   popupProfile.renderLoading(true);
   api.setUserInfo(item)
     .then((data) => {
@@ -103,7 +103,7 @@ const changeAvatar = (item) => {
   popupChangePhotoAvatar.renderLoading(true);
   api.changeUserAvatar(item)
     .then((data) => {
-      user.changeAvatarPicture(data);
+      user.setUserInfo(data);
       popupChangePhotoAvatar.closePopup();
     })
     .catch((err) => {
@@ -117,7 +117,7 @@ const changeAvatar = (item) => {
 
 const popupCard = new PopupWithForm('.popup_type_card', addCard);
 popupCard.setEventListeners();
-const popupProfile = new PopupWithForm('.popup_type_profile', handleFormSubmit);
+const popupProfile = new PopupWithForm('.popup_type_profile', handleProfileFormSubmit);
 popupProfile.setEventListeners();
 const popupChangePhotoAvatar = new PopupWithForm('.popup_type_change-avatar', changeAvatar);
 popupChangePhotoAvatar.setEventListeners();
@@ -141,7 +141,6 @@ profEditButton.addEventListener('click', function () {
   profileValidator.resetValidation();
 });
 profAddButton.addEventListener('click', function () {
-  cardForm.reset();
   popupCard.openPopup();
   addCardValidator.resetValidation();
 });

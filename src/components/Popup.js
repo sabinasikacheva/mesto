@@ -28,12 +28,4 @@ export default class Popup {
     });
   }
 
-  renderLoading(isLoading) {
-    if (isLoading) {
-      this._button.textContent = "Сохранение..."
-    } else {
-      this._button.textContent = "Сохранить"
-    }
-  }
-
 }
